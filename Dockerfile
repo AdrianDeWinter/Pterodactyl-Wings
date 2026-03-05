@@ -1,9 +1,12 @@
 FROM docker
+
+ARG WINGS=1.11.13
+
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS="2"
 COPY root/ /
 
 # Download latest Wings build from project repository: https://github.com/pterodactyl/wings
-ADD https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_amd64 /usr/bin/wings
+ADD https://github.com/pterodactyl/wings/releases/download/v${WINGS}/wings_linux_amd64 /usr/bin/wings
 
 # Download latest S6-Overlay build from project repository: https://github.com/just-containers/s6-overlay
 ADD https://github.com/just-containers/s6-overlay/releases/download/v2.2.0.3/s6-overlay-amd64-installer /tmp/s6-overlay
